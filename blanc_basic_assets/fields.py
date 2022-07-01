@@ -2,7 +2,7 @@ from itertools import groupby
 
 from django.db import models
 from django.forms.models import ModelChoiceField
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 
 class GroupedModelChoiceField(ModelChoiceField):
@@ -14,7 +14,7 @@ class GroupedModelChoiceField(ModelChoiceField):
         super(GroupedModelChoiceField, self).__init__(queryset, *args, **kwargs)
         self.group_by_field = group_by_field
         if group_label is None:
-            self.group_label = lambda group: force_text(group)
+            self.group_label = lambda group: force_str(group)
         else:
             self.group_label = group_label
 
